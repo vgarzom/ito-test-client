@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class ContactsProvider {
-  serverUrl = "http://localhost:8081"
+  serverUrl = "https://itotestserver.herokuapp.com"
   constructor(public http: Http) {
     console.log('Hello VetsProvider Provider');
   }

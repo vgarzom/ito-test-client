@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the UserInfoPage page.
@@ -15,11 +16,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class UserInfoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  user: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
+    this.storage.get("user").then((user) => {
+      console.log("user retrieve", user);
+      this.user = JSON.parse(user);
+    })
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserInfoPage');
+
+  }
+
+  logout() {
+    this.storage.remove("user");
+    this.navCtrl.setRoot("HomePage");
+  }
+
+  goToVetList() {
+    this.navCtrl.push("VetsPage");
   }
 
 }

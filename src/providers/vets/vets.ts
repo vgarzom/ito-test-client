@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class VetsProvider {
-  serverUrl = "http://localhost:8081"
+  serverUrl = "https://itotestserver.herokuapp.com"
   constructor(public http: Http) {
     console.log('Hello VetsProvider Provider');
   }
@@ -33,6 +33,16 @@ export class VetsProvider {
           resolve(data.json());
         })
     });
+  }
+
+  getCloseVets(lng, lat) {
+    return new Promise(resolve => {
+      this.http.post(this.serverUrl + "/api/vets/close",
+        { lat: lat, lng: lng, max_distance: 10000 })
+        .subscribe(data => {
+          resolve(data.json());
+        })
+    })
   }
 
 

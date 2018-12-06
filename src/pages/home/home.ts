@@ -56,7 +56,7 @@ export class HomePage {
       this.contactsProvider.login(this.user).then(data => {
         console.log(data);
         if (data['code'] === 200) {
-          this.storage.set("user", JSON.stringify(data['vet']));
+          this.storage.set("user", JSON.stringify(data['contact']));
           this.navCtrl.setRoot("UserInfoPage");
         } else {
           const alert = this.alertCtrl.create({

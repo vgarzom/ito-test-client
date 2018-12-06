@@ -16,17 +16,20 @@ import { Storage } from '@ionic/storage';
 })
 export class VetInfoPage {
 
-  user:any;
+  user: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storage:Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
+    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VetInfoPage');
-    this.storage.get("user").then((user) => {
-      console.log("user retrieve", user);
-      this.user = JSON.parse(user);
-    })
+    setTimeout(() => {
+      this.storage.get("user").then((user) => {
+        console.log("user retrieve", user);
+        this.user = JSON.parse(user);
+      })
+    }, 500)
   }
 
   logout() {

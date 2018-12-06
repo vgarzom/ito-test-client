@@ -13,8 +13,10 @@
 
 <ion-content class="vets-bg">
   <ion-list inset>
-    <button ion-item *ngFor="let vet of vets" >
-      {{ vet.name }} {{vet.last_name}}
-    </button>  
+    <button ion-item *ngFor="let vet of vets">
+      <h2>{{ vet.name }} {{vet.lastname}}</h2>
+      <h3>{{vet.profession}}</h3>
+      <p>{{getDistanceName(vet.dist)}}</p>
+    </button>
   </ion-list>
 </ion-content>

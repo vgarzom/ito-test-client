@@ -7,12 +7,49 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>userInfo</ion-title>
+    <ion-title>Información Contacto</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
+  <ion-card *ngIf="user">
 
+    <ion-item>
+      <ion-icon name="person" item-start></ion-icon>
+      <h2>{{user.name}} {{user.lastname}}</h2>
+      <p>Usuario</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="calendar" item-start></ion-icon>
+      <h2>Edad</h2>
+      <p>{{user.age}}</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name='{{user.sex === "M" ? "man" : "woman"}}' item-start></ion-icon>
+      <h2>Género</h2>
+      <p>{{user.sex === "M" ? "Masculino" : "Femenino"}}</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name='map' item-start></ion-icon>
+      <h2>Dirección</h2>
+      <p>{{user.address}}</p>
+    </ion-item>
+
+
+
+  </ion-card>
+
+    <button ion-button full round (click)="goToVetList()">Listar veterinarios cerca</button>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="danger">
+    <button id="registerBtn" class="round-corners" ion-button clear color="light" full on-click="logout()">
+      Cerrar
+    </button>
+  </ion-toolbar>
+</ion-footer>
