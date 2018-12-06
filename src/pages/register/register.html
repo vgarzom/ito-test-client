@@ -31,9 +31,9 @@
       <ion-input type="text" [(ngModel)]="user.lastname"></ion-input>
     </ion-item>
     <ion-item>
-        <ion-label>Dirección</ion-label>
-        <ion-input type="text" [(ngModel)]="user.address"></ion-input>
-      </ion-item>
+      <ion-label>Dirección</ion-label>
+      <ion-input type="text" [(ngModel)]="user.address"></ion-input>
+    </ion-item>
     <ion-item>
       <ion-label>Edad</ion-label>
       <ion-input type="number" [(ngModel)]="user.age"></ion-input>
@@ -69,8 +69,11 @@
     </ion-item>
   </ion-list>
 
-
-  <button ion-button color="secondary" round (click)="register()">Registrar</button>
 </ion-content>
-
 <ion-footer>
+  <ion-toolbar color="secondary">
+    <button id="registerBtn" class="round-corners" ion-button clear color="light" full on-click="register()">
+      Registrar
+    </button>
+  </ion-toolbar>
+</ion-footer>

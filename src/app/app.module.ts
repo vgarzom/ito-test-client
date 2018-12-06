@@ -4,33 +4,26 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { VetsProvider } from '../providers/vets/vets';
-import { VetsPageModule } from '../pages/vets/vets.module';
-import { RegisterPageModule } from '../pages/register/register.module';
-import { InfoPageModule } from '../pages/info/info.module';
 import { ContactsProvider } from '../providers/contacts/contacts';
 import { GeolocationProvider } from '../providers/geolocation/geolocation';
 
 @NgModule({
   declarations: [
-    MyApp,
-    HomePage
+    MyApp
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
-    VetsPageModule,
-    RegisterPageModule,
-    InfoPageModule
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    HomePage
+    MyApp
   ],
   providers: [
     StatusBar,

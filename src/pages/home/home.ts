@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import { NavController, Alert } from 'ionic-angular';
 import { VetsProvider } from '../../providers/vets/vets';
 import { ContactsProvider } from '../../providers/contacts/contacts';
-import { AlertController } from 'ionic-angular';
+import { IonicPage, AlertController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
+@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -17,7 +19,8 @@ export class HomePage {
   constructor(public navCtrl: NavController,
     private vetsProvider: VetsProvider,
     private contactsProvider: ContactsProvider,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    private storage: Storage) {
 
   }
 
@@ -36,7 +39,9 @@ export class HomePage {
       this.vetsProvider.login(this.user).then(data => {
         console.log(data);
         if (data['code'] === 200) {
-          this.navCtrl.setRoot("InfoPage");
+          console.log("Is code 200");
+          this.storage.set("user", JSON.stringify(data['vet']));
+          this.navCtrl.setRoot("VetInfoPage");
         } else {
           const alert = this.alertCtrl.create({
             title: 'Ooops!',
@@ -51,7 +56,8 @@ export class HomePage {
       this.contactsProvider.login(this.user).then(data => {
         console.log(data);
         if (data['code'] === 200) {
-          this.navCtrl.setRoot("VetsPage");
+          this.storage.set("user", JSON.stringify(data['vet']));
+          this.navCtrl.setRoot("UserInfoPage");
         } else {
           const alert = this.alertCtrl.create({
             title: 'Ooops!',
