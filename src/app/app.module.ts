@@ -8,9 +8,11 @@ import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { VetsProvider } from '../providers/vets/vets';
-import { VetsPageModule } from '../pages/vets/vets.module'; 
-import { RegisterPageModule } from '../pages/register/register.module'
+import { VetsPageModule } from '../pages/vets/vets.module';
+import { RegisterPageModule } from '../pages/register/register.module';
+import { InfoPageModule } from '../pages/info/info.module';
 import { ContactsProvider } from '../providers/contacts/contacts';
+import { GeolocationProvider } from '../providers/geolocation/geolocation';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ContactsProvider } from '../providers/contacts/contacts';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
-    VetsPageModule
+    VetsPageModule,
+    RegisterPageModule,
+    InfoPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -31,9 +35,10 @@ import { ContactsProvider } from '../providers/contacts/contacts';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     VetsProvider,
-    ContactsProvider
+    ContactsProvider,
+    GeolocationProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }
