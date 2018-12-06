@@ -1,5 +1,11 @@
 {
   "name": "ito_vet_mobile",
   "integrations": {},
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "api",
+      "proxyUrl": "https://itotestserver.herokuapp.com"
+    }
+  ]
 }

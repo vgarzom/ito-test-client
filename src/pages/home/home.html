@@ -1,14 +1,44 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content class="login-bg">
+  <ion-grid class="login-bg">
+    <ion-row>
+      <ion-col col-12 class="logo-container">
+        <img src="assets/imgs/logo.svg" />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list inset>
+
+    <ion-item>
+      <ion-label>Username</ion-label>
+      <ion-input type="text" [(ngModel)]="user.username" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+    </ion-item>
+
+
+  <ion-item>
+      <ion-label>Soy veterinario</ion-label>
+      <ion-toggle [(ngModel)]="isVet"></ion-toggle>
+    </ion-item>
+
+  </ion-list>
+
+  <button ion-button color="secondary" round (click)="login()">Login</button>
+
 </ion-content>
+
+<ion-footer>
+
+  <ion-toolbar color="danger">
+    <button id="registerBtn" class="round-corners" ion-button clear color="light" full on-click="register()">
+      No tengo cuenta
+    </button>
+  </ion-toolbar>
+</ion-footer>
